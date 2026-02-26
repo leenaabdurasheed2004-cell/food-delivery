@@ -1,0 +1,133 @@
+.order {
+  width: 100%;
+  padding: 30px;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.order h3 {
+  margin-bottom: 25px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Each Order Card */
+.order-item {
+  display: grid;
+  grid-template-columns: 60px 2fr 1fr 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease;
+}
+
+.order-item:hover {
+  transform: translateY(-3px);
+}
+
+/* Icon */
+.order-item img {
+  width: 50px;
+}
+
+/* Food items */
+.order-item-food {
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+/* Name */
+.order-item-name {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+/* Address */
+.order-item-address p {
+  margin: 2px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Phone */
+.order-item-phone {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+
+/* Right side text */
+.order-item > p {
+  font-weight: 500;
+  color: #333;
+}
+
+/* Select dropdown */
+.order-item select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: #fff;
+  transition: 0.2s ease;
+}
+
+.order-item select:hover {
+  border-color: tomato;
+}
+
+.order-item select:focus {
+  border-color: tomato;
+  box-shadow: 0 0 0 2px rgba(255, 99, 71, 0.2);
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .order-item {
+    grid-template-columns: 50px 2fr 1fr 1fr;
+  }
+
+  .order-item > p:nth-child(4) {
+    display: none; /* hide item count to reduce crowding */
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .order {
+    padding: 15px;
+  }
+
+  .order-item {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    text-align: left;
+  }
+
+  .order-item img {
+    width: 40px;
+  }
+
+  .order-item > p,
+  .order-item select {
+    width: 100%;
+  }
+
+  .order-item select {
+    margin-top: 10px;
+  }
+}

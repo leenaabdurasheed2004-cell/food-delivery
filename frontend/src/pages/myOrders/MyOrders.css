@@ -1,0 +1,91 @@
+.my-orders{
+    margin: 60px 0;
+    padding: 0 10%;
+}
+
+.my-orders h2{
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Container */
+.my-orders .container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Order Card */
+.my-orders-order{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 18px 25px;
+    border-radius: 10px;
+    border: 1px solid #f2f2f2;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: 0.3s ease;
+}
+
+.my-orders-order:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+/* Order Image */
+.my-orders-order img{
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+}
+
+/* Order Details */
+.my-orders-order p{
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+}
+
+/* Status dot */
+.my-orders-order p span{
+    color: tomato;
+    font-weight: 600;
+}
+
+/* Push button to right */
+.my-orders-order button{
+    margin-left: auto;
+    padding: 8px 18px;
+    border-radius: 6px;
+    border: none;
+    background-color: tomato;
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.my-orders-order button:hover{
+    background-color: #e64500;
+}
+
+/* Responsive */
+@media (max-width: 768px){
+
+    .my-orders{
+        padding: 0 5%;
+    }
+
+    .my-orders-order{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .my-orders-order button{
+        margin-left: 0;
+        width: 100%;
+    }
+}

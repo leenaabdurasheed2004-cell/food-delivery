@@ -6,10 +6,12 @@ dotenv.config();
 export const sendOTPEmail = async (email, otp) => {
     try {
         const transporter = nodemailer.createTransport({
-            service: "gmail",
+            host: "smtp.gmail.com",
+            port: 587,       // important change
+            secure: false,   // true only for port 465
             auth: {
                 user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS // App Password
+                pass: process.env.EMAIL_PASS
             }
         });
 
@@ -21,9 +23,10 @@ export const sendOTPEmail = async (email, otp) => {
         });
 
         console.log("✅ OTP sent successfully to", email);
-        return true; 
+        return true;
+
     } catch (err) {
         console.log("❌ Error sending OTP:", err);
-        throw err; // Throw error so otpRoute.js can catch it
+        throw err;
     }
 };

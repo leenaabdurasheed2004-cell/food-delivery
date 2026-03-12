@@ -1,24 +1,17 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const sendOTPEmail = async (email, otp) => {
   try {
-    const transporter = nodemailer.createTransport({
-      service: "gmail",   // simpler and more reliable
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-      }
-    });
-
-    await transporter.sendMail({
-      from: `"Food Delivery" <${process.env.EMAIL_USER}>`,
+    const response = await resend.emails.send({
+      from: "onboarding@resend.dev",
       to: email,
       subject: "OTP Verification",
-      text: `Your OTP is ${otp}`,
       html: `<h2>Your OTP is: ${otp}</h2>`
     });
 
-    console.log("✅ OTP email sent successfully");
+    console.log("OTP email sent:", response);
   } catch (error) {
     console.error("❌ Error sending OTP:", error);
   }

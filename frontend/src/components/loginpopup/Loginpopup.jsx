@@ -41,30 +41,42 @@ const Loginpopup = ({ setShowLogin }) => {
   // -------------------------
   // Verify OTP and auto-login
   // -------------------------
-  const verifyOtp = async () => {
-    if (!otp) return alert("Please enter OTP");
+const verifyOtp = async () => {
+  if (!otp) return alert("Please enter OTP");
 
-    try {
-      setLoading(true);
-      const res = await axios.post(`${url}/api/otp/verify`, { email: data.email, otp: otp.trim() });
+  try {
+    setLoading(true);
 
-      if (res.data.success) {
-        // OTP verified → set JWT token
-        setToken(res.data.token);
-        localStorage.setItem("token", res.data.token);
-        alert("Logged in successfully!");
-        setShowLogin(false);
-      } else {
-        alert(res.data.message);
-      }
-    } catch (err) {
-      console.log("OTP verification error:", err);
-      alert("OTP verification failed");
-    } finally {
-      setLoading(false);
+    const res = await axios.post(`${url}/api/otp/verify`, {
+      email: data.email,
+      otp: otp.trim()
+    });
+
+    if (res.data.success) {
+
+      const token = res.data.token;
+
+      // Save token
+      localStorage.setItem("token", token);
+
+      // Update context
+      setToken(token);
+
+      alert("Login successful");
+
+      setShowLogin(false);
+
+    } else {
+      alert(res.data.message);
     }
-  };
 
+  } catch (err) {
+    console.log("OTP verification error:", err);
+    alert("OTP verification failed");
+  } finally {
+    setLoading(false);
+  }
+};
   // -------------------------
   // Sign Up
   // -------------------------

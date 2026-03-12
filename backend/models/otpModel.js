@@ -1,12 +1,19 @@
 import mongoose from "mongoose";
 
 const otpSchema = new mongoose.Schema({
-  email: { type: String, required: true },
-  otp: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now, expires: 300 } // 5 minutes
+  email: { 
+    type: String, 
+    required: true 
+  },
+  otp: { 
+    type: String, 
+    required: true 
+  },
+  createdAt: { 
+    type: Date, 
+    default: Date.now, 
+    expires: 300   // OTP auto delete after 5 minutes
+  }
 });
-
-// Ensure TTL index is created
-otpSchema.index({ createdAt: 1 }, { expireAfterSeconds: 300 });
 
 export default mongoose.model("Otp", otpSchema);
